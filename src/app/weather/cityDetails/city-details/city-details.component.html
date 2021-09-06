@@ -1,0 +1,26 @@
+<div class="row m-3 p-3 container ">
+    <div class="col-4 border border-3 p-3 me-2 position-relative">
+      <div class="row">
+        <form class="row">
+            <div class="col-sm-9"><input type="text" class="form-control m-2" id="cityName" placeholder="Type city name" #cityName></div>
+            <div class="col-sm-3"><a type="submit" class="m-3" (click)="addLocation($event,cityName.value)"><fa-icon [icon]="faPlus"></fa-icon></a></div>
+        </form>
+        <hr style="height:3px; width:100%; border-width:0; color:black; background-color:black">
+        <div class="row">
+            <span>{{RECENT_LOCATION_LBL}}</span>
+        </div>
+        <hr style="height:1px; width:100%; border-width:0; color:black; background-color:black">
+        <div class="list-group list-group-flush" *ngIf="cities.length">
+            <a routerLink='/forecastDetails' class="list-group-item d-flex justify-content-between align-items-start" (click)="choosenCity(i)" *ngFor="let city of cities; index as i">
+                <span class='col-1'>{{city.cityName}} - {{city.temperature }}C {{city.conditions|titlecase}}</span>
+                <a (click)="refreshCity(i)"><fa-icon [icon]="faSync"></fa-icon></a>
+                <a (click)="removeCity($event,i)"><fa-icon [icon]="faTimes"></fa-icon></a>
+            </a>
+        </div>
+        <div class="row">
+            <button type="reset" class = "btn btn-secondary" id= "fixedbutton" (click)="clearData()">Clear</button>
+        </div> 
+      </div>
+    </div>
+    <div class="col-7 border border-3 day"><app-weather-info-details  *ngIf = "currentCity"[currentCity]="currentCity"></app-weather-info-details></div>
+  </div>

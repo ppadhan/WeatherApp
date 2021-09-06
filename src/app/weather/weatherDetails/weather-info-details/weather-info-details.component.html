@@ -1,0 +1,23 @@
+<div class="row m-3">
+    <div class="col-sm-10"><h3>{{currentCity}}</h3></div>
+    <div class="col-sm-1"><a type="submit" (click)="refreshCurrentCity()"><fa-icon class="fa-lg" [icon]="faSync"></fa-icon></a></div>
+</div>
+<div class="row m-3">
+    <div class="col-sm-4 m-3">
+        <fa-icon class="d-flex justify-content-center fa-9x blue"[icon]="getIcon(currentWeather.main)"></fa-icon>
+    </div>
+    <div class="col-sm-4">
+        <div class="p-2">{{currentWeather.temperature }}<span>C</span></div>
+        <div class="p-2">{{currentWeather.conditions |titlecase}}</div>
+        <div class="p-2">Wind {{currentWeather.windSpeed}}ms {{currentWeather.windDir}}deg</div>
+        <div class="p-2">Pressure {{currentWeather.pressure}}</div>
+    </div>
+</div>
+<div class="row m-5">
+    <div class="col-sm-2 p-2" *ngFor="let forecast of forecasts">
+        <div class="row d-flex justify-content-center m-2">{{forecast.day |date:"dd"}}</div>
+        <div class="row d-flex justify-content-center m-2">{{forecast.day | date : "EE"}}</div>
+        <div class="row m-2"><fa-icon class="d-flex justify-content-center fa-3x blue"[icon]="getIcon(forecast.main)"></fa-icon></div>
+        <div class="row d-flex justify-content-center m-2">{{forecast.temperature}}C</div>
+    </div>
+</div>

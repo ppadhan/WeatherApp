@@ -1,0 +1,18 @@
+.col-1{display:inline-block;width:80%;}
+
+#fixedbutton {
+    position: absolute;
+    bottom: 0px;
+    right: 0px; 
+    width: fit-content;
+    margin: 8px;
+}
+
+.container{
+    min-height:600px;
+    min-width:1300px;
+}
+
+.day{
+    background-image: url('../../../../assets/images/background.png');
+}
